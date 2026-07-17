@@ -1,4 +1,4 @@
-import { ArrowRight, Landmark, Hotel, Building2, Globe2, Vote, Stethoscope } from "lucide-react";
+import { ArrowRight, Landmark, Hotel, Building2, Globe2, Vote, Stethoscope, PhoneCall } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -51,6 +51,14 @@ const industries = [
     desc: "NGOs and civic organizations use our platforms to run community programs, track participation, manage volunteers, and generate impact reports with data-backed evidence.",
     products: ["AllForPet", "NirvachakAI"],
     color: "bg-pink-50 border-pink-200",
+  },
+  {
+    icon: <PhoneCall size={36} className="text-orange-600" />,
+    name: "Inside Sales & Telecalling",
+    tagline: "Supercharge your sales teams",
+    desc: "Sales teams and BPOs use TelecallingCRM to manage leads, automate dialing, track agent performance, and close more deals with a streamlined telecalling workflow.",
+    products: ["TelecallingCRM"],
+    color: "bg-orange-50 border-orange-200",
   },
 ];
 
