@@ -46,7 +46,7 @@ export default function ContactPage() {
             <h2 className="text-2xl font-extrabold text-gray-900 mb-6">Get in Touch</h2>
             <p className="text-gray-500 mb-10 leading-relaxed">
               Whether you&apos;re evaluating NirvachakAI for your election campaign, HospitalityOS for your hotel, or
-              AllForPet for your municipality � our team is ready to walk you through the right solution.
+              AllForPet for your municipality — our team is ready to walk you through the right solution.
             </p>
 
             <div className="space-y-5 mb-10">
@@ -174,9 +174,9 @@ export default function ContactPage() {
                       className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
                     >
                       <option value="">Select a product or service</option>
-                      <option value="nirvachakai">NirvachakAI � Election Campaign Platform</option>
-                      <option value="hospitalityos">HospitalityOS � Hotel & Restaurant ERP</option>
-                      <option value="allforpet">AllForPet � Pet Management Platform</option>
+                      <option value="nirvachakai">NirvachakAI — Election Campaign Platform</option>
+                      <option value="hospitalityos">HospitalityOS — Hotel &amp; Restaurant ERP</option>
+                      <option value="allforpet">AllForPet — Pet Management Platform</option>
                       <option value="custom">Custom Software Development</option>
                       <option value="ai">AI Solutions</option>
                       <option value="other">Other / General Inquiry</option>
