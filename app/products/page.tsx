@@ -52,7 +52,7 @@ const products = [
     name: "TelecallingCRM",
     tagline: "Smart Telecalling & Sales Pipeline Management Platform",
     description:
-      "TelecallingCRM is a powerful, purpose-built CRM for telecalling teams and inside sales operations. It streamlines lead management, auto-dialing, call tracking, and agent performance — giving sales managers complete visibility and control over their entire telecalling workflow from a single, intuitive platform.",
+      "TelecallingCRM is a powerful, purpose-built CRM for telecalling teams and inside sales operations. It streamlines lead management, auto-dialing, call tracking, attendance, and agent performance — giving sales managers complete visibility and control over their entire telecalling workflow from a single, intuitive platform.",
     features: [
       { title: "Lead Management", desc: "Import, assign, and track leads across stages with smart prioritization and auto-distribution to agents." },
       { title: "Auto & Preview Dialer", desc: "Boost agent productivity with auto-dialing and preview modes that eliminate manual dialing effort." },
@@ -60,6 +60,8 @@ const products = [
       { title: "Agent Performance Dashboard", desc: "Monitor call counts, talk time, conversion rates, and targets for every agent in real time." },
       { title: "Follow-Up & Reminder System", desc: "Schedule callbacks and follow-ups with automated reminders so no lead ever falls through the cracks." },
       { title: "Reports & Analytics", desc: "Get in-depth reports on campaign performance, lead conversion funnels, and team productivity trends." },
+      { title: "Punch IN / Punch OUT", desc: "Agents can mark attendance digitally with geo-tagged Punch IN and Punch OUT, giving managers accurate real-time attendance visibility." },
+      { title: "Leave Management", desc: "Agents can apply for leaves directly from the platform. Managers can review, approve, or reject leave requests with a full leave history and balance tracker." },
     ],
     color: "from-orange-500 to-red-500",
     bgLight: "from-orange-50 to-red-50",

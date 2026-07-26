@@ -56,7 +56,7 @@ const industries = [
     icon: <PhoneCall size={36} className="text-orange-600" />,
     name: "Inside Sales & Telecalling",
     tagline: "Supercharge your sales teams",
-    desc: "Sales teams and BPOs use TelecallingCRM to manage leads, automate dialing, track agent performance, and close more deals with a streamlined telecalling workflow.",
+    desc: "Sales teams and BPOs use TelecallingCRM to manage leads, automate dialing, track agent performance, manage attendance with Punch IN/OUT, handle leave applications, and close more deals with a streamlined telecalling workflow.",
     products: ["TelecallingCRM"],
     color: "bg-orange-50 border-orange-200",
   },
