@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -9,7 +9,7 @@ const posts = [
     catColor: "text-blue-600 bg-blue-50",
     title: "How AI is Transforming Indian Election Campaigns in 2025",
     excerpt:
-      "AI-powered platforms like NirvachakAI are changing the game � from booth-level analytics to predictive voter modeling. Here's how.",
+      "AI-powered platforms like NirvachakAI are changing the game — from booth-level analytics to predictive voter modeling. Here's how.",
     date: "June 15, 2025",
     readTime: "6 min read",
   },
@@ -27,7 +27,7 @@ const posts = [
     catColor: "text-green-600 bg-green-50",
     title: "Pet Registration Digitization: A Step Towards Smart Cities",
     excerpt:
-      "Nagar Palikas across India are going digital for pet management. Here's what a fully digital pet registration system looks like � and why it matters.",
+      "Nagar Palikas across India are going digital for pet management. Here's what a fully digital pet registration system looks like — and why it matters.",
     date: "April 10, 2025",
     readTime: "4 min read",
   },
@@ -45,7 +45,7 @@ const posts = [
     catColor: "text-indigo-600 bg-indigo-50",
     title: "Data-Driven Politics: How Voter Analytics is Reshaping Indian Elections",
     excerpt:
-      "From constituency profiling to real-time booth monitoring � political parties are investing heavily in data. Here's why.",
+      "From constituency profiling to real-time booth monitoring — political parties are investing heavily in data. Here's why.",
     date: "February 18, 2025",
     readTime: "8 min read",
   },
@@ -100,7 +100,7 @@ export default function BlogPage() {
               <h2 className="font-extrabold text-gray-900 leading-snug mb-3">{post.title}</h2>
               <p className="text-sm text-gray-500 leading-relaxed flex-1 mb-5">{post.excerpt}</p>
               <div className="flex items-center justify-between mt-auto">
-                <span className="text-xs text-gray-400">{post.date} � {post.readTime}</span>
+                <span className="text-xs text-gray-400">{post.date} — {post.readTime}</span>
                 <Link href="#" className="inline-flex items-center gap-1 text-blue-600 text-sm font-semibold hover:underline">
                   Read <ArrowRight size={14} />
                 </Link>

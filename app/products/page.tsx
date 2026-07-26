@@ -1,4 +1,4 @@
-import { CheckCircle, Vote, Hotel, PawPrint, ArrowRight, PhoneCall } from "lucide-react";
+﻿import { CheckCircle, Vote, Hotel, PawPrint, ArrowRight, PhoneCall } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -12,7 +12,7 @@ const products = [
     name: "NirvachakAI",
     tagline: "Political Campaign & Election Intelligence Platform",
     description:
-      "NirvachakAI is India's most advanced AI-powered political campaign management platform. Designed for political parties, candidates, and campaign managers, it gives you a competitive edge with real-time voter data, AI-driven insights, and end-to-end campaign coordination tools � from the ground up to the constituency level.",
+      "NirvachakAI is India's most advanced AI-powered political campaign management platform. Designed for political parties, candidates, and campaign managers, it gives you a competitive edge with real-time voter data, AI-driven insights, and end-to-end campaign coordination tools — from the ground up to the constituency level.",
     features: [
       { title: "Booth Management", desc: "Manage every polling booth with agent assignment, status tracking, and real-time reporting." },
       { title: "Voter Analytics", desc: "Deep-dive into demographic data, historical trends, and predictive swing analysis." },
@@ -32,7 +32,7 @@ const products = [
     name: "HospitalityOS",
     tagline: "Complete Hotel & Restaurant Management ERP",
     description:
-      "HospitalityOS is a fully integrated ERP system for hotels and restaurants. From the moment a guest walks in to checkout, every touchpoint is managed � bookings, POS billing, kitchen operations, inventory, purchasing, and business intelligence reporting.",
+      "HospitalityOS is a fully integrated ERP system for hotels and restaurants. From the moment a guest walks in to checkout, every touchpoint is managed — bookings, POS billing, kitchen operations, inventory, purchasing, and business intelligence reporting.",
     features: [
       { title: "Hotel Booking & Front Desk", desc: "Online and offline room bookings, check-in/out management, and guest profiles." },
       { title: "Restaurant POS", desc: "Fast, intuitive POS system with table management and split billing." },
@@ -74,7 +74,7 @@ const products = [
     name: "AllForPet",
     tagline: "Smart Pet Registration & Municipal Management Platform",
     description:
-      "AllForPet is a government-facing SaaS platform that helps Nagar Palikas and municipal corporations digitize the complete lifecycle of pet management � from registration and licensing to vaccination reminders, lost pet alerts, and community complaint handling.",
+      "AllForPet is a government-facing SaaS platform that helps Nagar Palikas and municipal corporations digitize the complete lifecycle of pet management — from registration and licensing to vaccination reminders, lost pet alerts, and community complaint handling.",
     features: [
       { title: "Pet Registration & Licensing", desc: "Citizens can register pets online and receive digital licenses." },
       { title: "License Renewal", desc: "Automated renewal reminders with online payment integration." },

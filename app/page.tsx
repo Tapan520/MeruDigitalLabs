@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import {
   ArrowRight,
   CheckCircle,
@@ -50,7 +50,7 @@ const products = [
     name: "HospitalityOS",
     tagline: "Hotel & Restaurant Management System",
     description:
-      "An all-in-one ERP for hotels and restaurants � from front desk bookings and restaurant POS to kitchen management and inventory control.",
+      "An all-in-one ERP for hotels and restaurants — from front desk bookings and restaurant POS to kitchen management and inventory control.",
     features: [
       "Hotel Booking & Front Desk",
       "Restaurant POS",
@@ -108,7 +108,7 @@ const whyUs = [
   {
     icon: <Brain className="text-blue-600" size={22} />,
     title: "AI at the Core",
-    desc: "Every product is designed with AI-first thinking � from predictive analytics to intelligent automation.",
+    desc: "Every product is designed with AI-first thinking — from predictive analytics to intelligent automation.",
   },
   {
     icon: <ShieldCheck className="text-green-600" size={22} />,
@@ -123,7 +123,7 @@ const whyUs = [
   {
     icon: <HeartHandshake className="text-pink-600" size={22} />,
     title: "Customer Success First",
-    desc: "We don't just sell software � we partner with you to ensure measurable outcomes and long-term success.",
+    desc: "We don't just sell software — we partner with you to ensure measurable outcomes and long-term success.",
   },
 ];
 

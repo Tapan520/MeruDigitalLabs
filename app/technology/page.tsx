@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+﻿import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const techStack = [
@@ -79,7 +79,7 @@ export default function TechnologyPage() {
           <div className="grid sm:grid-cols-3 gap-6">
             {[
               { title: "API-First Design", desc: "All our products are built on open APIs, enabling seamless integration with third-party tools and government systems." },
-              { title: "Cloud-Native Architecture", desc: "Designed for scale from day one � with auto-scaling, fault tolerance, and 99.9% uptime SLAs." },
+              { title: "Cloud-Native Architecture", desc: "Designed for scale from day one — with auto-scaling, fault tolerance, and 99.9% uptime SLAs." },
               { title: "Security by Design", desc: "Security isn't an afterthought. Encryption, role-based access, and audit logs are built into every module." },
             ].map((p) => (
               <div key={p.title} className="bg-gray-50 border border-gray-100 rounded-2xl p-6 text-left">

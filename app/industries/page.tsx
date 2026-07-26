@@ -1,4 +1,4 @@
-import { ArrowRight, Landmark, Hotel, Building2, Globe2, Vote, Stethoscope, PhoneCall } from "lucide-react";
+﻿import { ArrowRight, Landmark, Hotel, Building2, Globe2, Vote, Stethoscope, PhoneCall } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -16,7 +16,7 @@ const industries = [
     icon: <Hotel size={36} className="text-purple-600" />,
     name: "Hospitality",
     tagline: "Elevating guest experiences",
-    desc: "From boutique hotels to restaurant chains, our HospitalityOS platform brings complete operational control � reservations, POS, kitchen, inventory, and reports � under one roof.",
+    desc: "From boutique hotels to restaurant chains, our HospitalityOS platform brings complete operational control — reservations, POS, kitchen, inventory, and reports — under one roof.",
     products: ["HospitalityOS"],
     color: "bg-purple-50 border-purple-200",
   },

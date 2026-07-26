@@ -1,4 +1,4 @@
-import {
+﻿import {
   Code2,
   Brain,
   Smartphone,
@@ -17,7 +17,7 @@ const services = [
   {
     icon: <Code2 size={32} className="text-blue-600" />,
     title: "Custom Software Development",
-    desc: "End-to-end custom software built to your exact specifications � web, desktop, or enterprise applications using modern technology stacks.",
+    desc: "End-to-end custom software built to your exact specifications — web, desktop, or enterprise applications using modern technology stacks.",
     tags: ["React", "Next.js", "Node.js", "Python"],
   },
   {
@@ -59,7 +59,7 @@ const services = [
   {
     icon: <Bot size={32} className="text-cyan-600" />,
     title: "AI Chatbots",
-    desc: "Intelligent chatbots for customer support, citizen services, and internal helpdesks � powered by the latest LLMs.",
+    desc: "Intelligent chatbots for customer support, citizen services, and internal helpdesks — powered by the latest LLMs.",
     tags: ["OpenAI", "Langchain", "WhatsApp API", "Web Chat"],
   },
 ];

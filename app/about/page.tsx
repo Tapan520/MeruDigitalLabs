@@ -1,4 +1,4 @@
-import { Lightbulb, Eye, ShieldCheck, Users, HeartHandshake, Star, ArrowRight } from "lucide-react";
+﻿import { Lightbulb, Eye, ShieldCheck, Users, HeartHandshake, Star, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -12,7 +12,7 @@ const values = [
   {
     icon: <Eye size={28} className="text-blue-500" />,
     title: "Transparency",
-    desc: "We believe in open, honest communication with our clients, partners, and team � no surprises, no fine print.",
+    desc: "We believe in open, honest communication with our clients, partners, and team — no surprises, no fine print.",
   },
   {
     icon: <Star size={28} className="text-green-500" />,
@@ -27,7 +27,7 @@ const values = [
   {
     icon: <Users size={28} className="text-pink-500" />,
     title: "Collaboration",
-    desc: "We work as an extension of your team � deeply engaged, always responsive, and genuinely invested in your goals.",
+    desc: "We work as an extension of your team — deeply engaged, always responsive, and genuinely invested in your goals.",
   },
   {
     icon: <HeartHandshake size={28} className="text-teal-500" />,
@@ -65,17 +65,17 @@ export default function AboutPage() {
             <h2 className="text-3xl font-extrabold text-gray-900 mb-6">Our Story</h2>
             <p className="text-gray-600 leading-relaxed mb-4">
               Meru Digital Labs was founded with a simple but powerful belief: that technology should solve real
-              problems for real people � whether it&apos;s a candidate running for election, a hotel manager struggling
+              problems for real people — whether it&apos;s a candidate running for election, a hotel manager struggling
               with inventory, or a municipal officer trying to track pet registrations.
             </p>
             <p className="text-gray-600 leading-relaxed mb-4">
-              We started by identifying three underserved domains in India&apos;s technology landscape � election campaign
-              management, hospitality operations, and civic municipal services � and built dedicated, best-in-class
+              We started by identifying three underserved domains in India&apos;s technology landscape — election campaign
+              management, hospitality operations, and civic municipal services — and built dedicated, best-in-class
               platforms for each: NirvachakAI, HospitalityOS, and AllForPet.
             </p>
             <p className="text-gray-600 leading-relaxed">
               Today, Meru Digital Labs is growing into India&apos;s leading AI-first SaaS company for governments,
-              businesses, and communities � with a commitment to delivering intelligent software that creates
+              businesses, and communities — with a commitment to delivering intelligent software that creates
               measurable outcomes.
             </p>
           </div>
@@ -101,7 +101,7 @@ export default function AboutPage() {
           <div className="bg-blue-600 text-white rounded-2xl p-10">
             <h3 className="text-2xl font-extrabold mb-4">Our Mission</h3>
             <p className="text-blue-100 leading-relaxed">
-              Building AI-powered software that simplifies governance, hospitality, and citizen services � making
+              Building AI-powered software that simplifies governance, hospitality, and citizen services — making
               digital transformation accessible to governments, businesses, and communities across India.
             </p>
           </div>
@@ -109,7 +109,7 @@ export default function AboutPage() {
             <h3 className="text-2xl font-extrabold mb-4">Our Vision</h3>
             <p className="text-purple-100 leading-relaxed">
               To become India&apos;s leading SaaS company delivering intelligent software solutions for governments,
-              businesses, and communities � driving a more connected, efficient, and data-driven India.
+              businesses, and communities — driving a more connected, efficient, and data-driven India.
             </p>
           </div>
         </div>
@@ -121,7 +121,7 @@ export default function AboutPage() {
           <div className="text-center mb-14">
             <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Our Values</h2>
             <p className="text-gray-500 max-w-xl mx-auto">
-              These core values guide everything we do � from how we build products to how we serve our clients.
+              These core values guide everything we do — from how we build products to how we serve our clients.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
