@@ -1,4 +1,4 @@
-﻿import { ArrowRight, Landmark, Hotel, Building2, Globe2, Vote, Stethoscope, PhoneCall } from "lucide-react";
+﻿import { ArrowRight, Landmark, Hotel, Building2, Globe2, Vote, Stethoscope, PhoneCall, Briefcase } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -59,6 +59,14 @@ const industries = [
     desc: "Sales teams and BPOs use TelecallingCRM to manage leads, automate dialing, track agent performance, manage attendance with Punch IN/OUT, handle leave applications, and close more deals with a streamlined telecalling workflow.",
     products: ["TelecallingCRM"],
     color: "bg-orange-50 border-orange-200",
+  },
+  {
+    icon: <Briefcase size={36} className="text-yellow-600" />,
+    name: "Gig Economy & Workforce",
+    tagline: "Empowering India's gig workforce",
+    desc: "ShramSetu helps businesses, staffing agencies, and government bodies register, verify, and match gig workers with employers — bringing trust, transparency, and efficiency to India's unorganized workforce sector.",
+    products: ["ShramSetu"],
+    color: "bg-yellow-50 border-yellow-200",
   },
 ];
 

@@ -17,6 +17,7 @@ import {
   Stethoscope,
   Landmark,
   Globe2,
+  Briefcase,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -102,6 +103,26 @@ const products = [
     color: "from-green-50 to-teal-50",
     href: "/products#allforpet",
   },
+  {
+    id: "shramsetu",
+    icon: <Briefcase size={22} className="text-yellow-600" />,
+    badge: "WorkTech",
+    badgeColor: "bg-yellow-100 text-yellow-700",
+    name: "ShramSetu",
+    tagline: "Gig Worker Registration & Employment Matching Platform",
+    description:
+      "Connecting verified gig workers with trusted employers — ShramSetu digitizes worker registration, skill verification, and job matching for India's growing gig economy.",
+    features: [
+      "Gig Worker Registration",
+      "Skill Verification & Profiling",
+      "Job Matching Engine",
+      "Employer Dashboard",
+      "Worker Background Check",
+      "Ratings & Reviews",
+    ],
+    color: "from-yellow-50 to-amber-50",
+    href: "/products#shramsetu",
+  },
 ];
 
 const whyUs = [
@@ -135,6 +156,7 @@ const industries = [
   { icon: <Vote size={24} />, name: "Political Organizations" },
   { icon: <PhoneCall size={24} />, name: "Inside Sales Teams" },
   { icon: <Stethoscope size={24} />, name: "NGOs & Civic Bodies" },
+  { icon: <Briefcase size={24} />, name: "Gig Economy" },
 ];
 
 const steps = [
@@ -172,7 +194,7 @@ const testimonials = [
 ];
 
 const stats = [
-{ value: "4+", label: "Products" },
+{ value: "5+", label: "Products" },
 { value: "10+", label: "Industries Served" },
   { value: "500+", label: "Clients" },
   { value: "99.9%", label: "Uptime SLA" },
@@ -235,7 +257,7 @@ export default function HomePage() {
           <div className="text-center mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Our Products</h2>
             <p className="text-sm text-gray-500 max-w-xl mx-auto">
-            Purpose-built software platforms for four distinct domains — elections, hospitality, municipal services, and sales.
+            Purpose-built software platforms for five distinct domains — elections, hospitality, municipal services, sales, and gig economy.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

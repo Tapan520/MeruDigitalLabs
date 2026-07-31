@@ -177,6 +177,7 @@ export default function ContactPage() {
                       <option value="nirvachakai">NirvachakAI — Election Campaign Platform</option>
                       <option value="hospitalityos">HospitalityOS — Hotel &amp; Restaurant ERP</option>
                       <option value="allforpet">AllForPet — Pet Management Platform</option>
+                      <option value="shramsetu">ShramSetu — Gig Worker & Employment Platform</option>
                       <option value="custom">Custom Software Development</option>
                       <option value="ai">AI Solutions</option>
                       <option value="other">Other / General Inquiry</option>

@@ -1,4 +1,4 @@
-﻿import { CheckCircle, Vote, Hotel, PawPrint, ArrowRight, PhoneCall } from "lucide-react";
+﻿import { CheckCircle, Vote, Hotel, PawPrint, ArrowRight, PhoneCall, Briefcase } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -86,6 +86,26 @@ const products = [
     color: "from-green-600 to-teal-600",
     bgLight: "from-green-50 to-teal-50",
   },
+  {
+    id: "shramsetu",
+    icon: <Briefcase size={40} className="text-yellow-600" />,
+    badge: "WorkTech",
+    badgeColor: "bg-yellow-100 text-yellow-700",
+    name: "ShramSetu",
+    tagline: "Gig Worker Registration & Employment Matching Platform",
+    description:
+      "ShramSetu is a digital platform that bridges the gap between India's gig workforce and employers. It enables verified registration of gig workers, skill profiling, and AI-powered job matching — ensuring employers get the right talent and workers get fair, verified opportunities.",
+    features: [
+      { title: "Gig Worker Registration", desc: "Workers can register with Aadhaar-linked digital profiles, skill sets, and work history." },
+      { title: "Skill Verification & Profiling", desc: "Document-backed skill verification to build a trusted, authenticated worker pool." },
+      { title: "Job Matching Engine", desc: "AI-powered matching connects employers with the most suitable verified gig workers instantly." },
+      { title: "Employer Dashboard", desc: "Employers can post requirements, browse verified profiles, and manage hiring from one dashboard." },
+      { title: "Worker Background Check", desc: "Integrated background verification to ensure safety and trust on both sides." },
+      { title: "Ratings & Reviews", desc: "Two-way rating system for workers and employers to build reputation and accountability." },
+    ],
+    color: "from-yellow-500 to-amber-500",
+    bgLight: "from-yellow-50 to-amber-50",
+  },
 ];
 
 export default function ProductsPage() {
@@ -98,8 +118,8 @@ export default function ProductsPage() {
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Our Products</h1>
           <p className="text-gray-300 text-lg">
-            Four powerful platforms. One unified technology company. Built to solve real-world problems for
-            governments, businesses, and communities.
+          Five powerful platforms. One unified technology company. Built to solve real-world problems for
+            governments, businesses, communities, and the gig economy.
           </p>
         </div>
       </section>
