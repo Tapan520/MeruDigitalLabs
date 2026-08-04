@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greenvale Bank | Analytics Growth Engine — Prototype Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --navy:#0B2545;
+    --navy-2:#13345E;
+    --paper:#F5F7F9;
+    --card:#FFFFFF;
+    --teal:#1B7A72;
+    --teal-light:#DCEEEC;
+    --amber:#C97A1A;
+    --amber-light:#FBE9D4;
+    --red:#B4402D;
+    --red-light:#F6E0DB;
+    --ink:#0F1E2E;
+    --sub:#5B6B7C;
+    --line:#E4E9EE;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px 80px;}
+  header.top{
+    background:linear-gradient(160deg,var(--navy) 0%, var(--navy-2) 100%);
+    color:#fff; padding:44px 0 54px;
+  }
+  header.top .wrap{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;}
+  .brand-eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    color:#8FB6C9; margin-bottom:10px;
+  }
+  h1{
+    font-family:'Fraunces',serif; font-weight:600; font-size:38px; margin:0 0 8px; line-height:1.08;
+  }
+  header.top p.sub{margin:0; color:#B7CAD9; font-size:15px; max-width:520px;}
+  .badge-row{display:flex; gap:10px; flex-wrap:wrap;}
+  .pill{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.03em;
+    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18);
+    color:#DCE8F0; padding:7px 12px; border-radius:100px; white-space:nowrap;
+  }
+  nav.tabs{
+    position:sticky; top:0; z-index:20; background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  nav.tabs .wrap{display:flex; gap:4px; padding:0 28px; overflow-x:auto;}
+  nav.tabs button{
+    font-family:'Inter',sans-serif; font-weight:600; font-size:13.5px; color:var(--sub);
+    background:none; border:none; padding:16px 16px 14px; cursor:pointer; white-space:nowrap;
+    border-bottom:3px solid transparent;
+  }
+  nav.tabs button.active{color:var(--navy); border-bottom-color:var(--teal);}
+  nav.tabs button:hover{color:var(--navy);}
+
+  section.view{display:none; padding-top:34px;}
+  section.view.active{display:block;}
+
+  .kpi-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:36px;}
+  .kpi{
+    background:var(--card); border:1px solid var(--line); border-radius:10px; padding:18px 18px 16px;
+  }
+  .kpi .label{font-size:12px; color:var(--sub); font-weight:600; text-transform:uppercase; letter-spacing:.04em; margin-bottom:10px;}
+  .kpi .value{font-family:'Fraunces',serif; font-size:30px; font-weight:600; color:var(--navy); line-height:1;}
+  .kpi .delta{font-size:12.5px; margin-top:8px; font-weight:600;}
+  .kpi .delta.bad{color:var(--red);}
+  .kpi .delta.good{color:var(--teal);}
+  .kpi .delta.neutral{color:var(--amber);}
+
+  h2.sec-title{
+    font-family:'Fraunces',serif; font-size:23px; font-weight:600; margin:0 0 4px; color:var(--navy);
+  }
+  p.sec-desc{color:var(--sub); font-size:14px; margin:0 0 22px; max-width:680px;}
+
+  .grid-2{display:grid; grid-template-columns:1.3fr 1fr; gap:16px; margin-bottom:16px;}
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:16px;}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:10px; padding:20px 20px 12px;
+  }
+  .card h3{font-size:14.5px; margin:0 0 2px; color:var(--ink); font-weight:700;}
+  .card .note{font-size:12px; color:var(--sub); margin:0 0 14px;}
+  .chart-box{position:relative; height:250px;}
+  .chart-box.short{height:190px;}
+
+  .callout{
+    background:var(--teal-light); border:1px solid #BFE0DC; border-radius:10px; padding:16px 18px;
+    font-size:13.5px; color:#0F3F3A; margin-bottom:16px; line-height:1.5;
+  }
+  .callout.amber{background:var(--amber-light); border-color:#EBCC9C; color:#5C3A0A;}
+  .callout.red{background:var(--red-light); border-color:#E7BCB1; color:#5C2418;}
+  .callout b{font-weight:700;}
+
+  table.mini{width:100%; border-collapse:collapse; font-size:13px;}
+  table.mini th{text-align:left; color:var(--sub); font-weight:600; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; padding:6px 8px; border-bottom:1px solid var(--line);}
+  table.mini td{padding:8px 8px; border-bottom:1px solid var(--line);}
+  table.mini tr:last-child td{border-bottom:none;}
+  .tag{display:inline-block; padding:2px 8px; border-radius:100px; font-size:11px; font-weight:700;}
+  .tag.hi{background:var(--red-light); color:var(--red);}
+  .tag.mid{background:var(--amber-light); color:var(--amber);}
+  .tag.lo{background:var(--teal-light); color:var(--teal);}
+
+  footer{padding:26px 0 10px; color:var(--sub); font-size:12px; border-top:1px solid var(--line); margin-top:20px;}
+  @media (max-width:860px){
+    .kpi-grid{grid-template-columns:repeat(2,1fr);}
+    .grid-2, .grid-3{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div>
+      <div class="brand-eyebrow">Greenvale Bank · Analytics Growth Engine</div>
+      <h1>Prototype Insights Dashboard</h1>
+      <p class="sub">A working prototype built from the customer, lending and Covera datasets — showing what a live board / ops dashboard would surface once productionised.</p>
+    </div>
+    <div class="badge-row">
+      <span class="pill">5,000 customer sample</span>
+      <span class="pill">999 SME applications</span>
+      <span class="pill">557 Covera policyholders</span>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="wrap">
+    <button class="tab-btn active" data-tab="churn">Retention &amp; Churn</button>
+    <button class="tab-btn" data-tab="sme">SME Lending</button>
+    <button class="tab-btn" data-tab="covera">Covera / Cross-Entity</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ============ CHURN TAB ============ -->
+<section class="view active" id="churn">
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">18–35 churn (sample)</div><div class="value">29.2%</div><div class="delta bad">vs 9.1% industry benchmark</div></div>
+    <div class="kpi"><div class="label">Overall book churn</div><div class="value">18.4%</div><div class="delta neutral">blended across segments</div></div>
+    <div class="kpi"><div class="label">Dormancy → churn signal</div><div class="value">0.87</div><div class="delta good">correlation, days inactive vs churn</div></div>
+    <div class="kpi"><div class="label">CLV at risk, 18–35 churners</div><div class="value">£1.78M</div><div class="delta bad">in this 5,000-record sample alone</div></div>
+  </div>
+
+  <div class="callout"><b>Headline insight:</b> Days-since-last-activity is by far the strongest churn predictor (r = 0.87) — customers inactive 31–60 days churn at <b>80.5%</b>, and 60+ days at <b>100%</b>, versus &lt;1% for customers active in the last two weeks. This is a near-perfect early-warning trigger, and it's cheap to compute — no ML model required to act on it on day one.</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Churn rate by age segment vs. industry</h3>
+      <p class="note">18–35 "digital-first" customers churn over 3x the rate of 55+ loyal customers, and well above benchmark</p>
+      <div class="chart-box"><canvas id="chChurnAge"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>Churn probability by inactivity window</h3>
+      <p class="note">The clearest actionable trigger in the dataset</p>
+      <div class="chart-box"><canvas id="chDormancy"></canvas></div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Churn rate by acquisition channel</h3>
+      <p class="note">Self-serve digital channels (Social, Search, App Store) churn 3–6x Branch/Telephone</p>
+      <div class="chart-box"><canvas id="chChannel"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>18–35 churn by product holding depth</h3>
+      <p class="note">Each additional product held meaningfully reduces churn risk</p>
+      <div class="chart-box"><canvas id="chProduct"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SME TAB ============ -->
+<section class="view" id="sme">
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">Avg. turnaround time</div><div class="value">15.3d</div><div class="delta bad">target ≤10 days</div></div>
+    <div class="kpi"><div class="label">Early-avoidable rejections</div><div class="value">30.2%</div><div class="delta bad">missing docs / policy criteria</div></div>
+    <div class="kpi"><div class="label">Analyst + committee stages</div><div class="value">75%</div><div class="delta neutral">share of total TAT</div></div>
+    <div class="kpi"><div class="label">Complete-file approval rate</div><div class="value">50.4%</div><div class="delta good">of fully-documented applications</div></div>
+  </div>
+
+  <div class="callout amber"><b>Headline insight:</b> The bottleneck isn't document intake (2.0 days, already efficient) — it's <b>analyst review (6.9 days, backlog-driven)</b> and <b>committee review (4.6 days, meets only on Tuesdays)</b>, together 75% of the 15.3-day average. A pre-screening triage model plus a shift to twice-weekly / delegated-authority committee decisions is the fastest path to the 10-day target — not a rebuild of the whole process.</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Turnaround time by process stage (days)</h3>
+      <p class="note">Where the 15.3-day average is actually spent</p>
+      <div class="chart-box"><canvas id="chTat"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>Decision outcome mix</h3>
+      <p class="note">30% rejected early; a further 20% rejected only after full review</p>
+      <div class="chart-box"><canvas id="chDecision"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:16px;">
+    <h3>Complete vs. incomplete applications</h3>
+    <p class="note">Applications missing documents are (rightly) fast-failed — the real prize is speeding up the 70% that are complete</p>
+    <div class="chart-box short"><canvas id="chComplete"></canvas></div>
+  </div>
+</section>
+
+<!-- ============ COVERA TAB ============ -->
+<section class="view" id="covera">
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">CLV uplift, cross-sold customers</div><div class="value">+58%</div><div class="delta good">£14,980 vs £9,489</div></div>
+    <div class="kpi"><div class="label">Churn, cross-sold vs not</div><div class="value">0% <span style="font-size:15px;color:var(--sub);">vs 21.1%</span></div><div class="delta good">directional signal, small n</div></div>
+    <div class="kpi"><div class="label">Cross-entity overlap customers</div><div class="value">41,000</div><div class="delta neutral">Greenvale + Covera (bank-wide)</div></div>
+    <div class="kpi"><div class="label">Documented consent coverage</div><div class="value">14.5%</div><div class="delta bad">of overlap customers — regulatory blocker</div></div>
+  </div>
+
+  <div class="callout red"><b>Regulatory flag:</b> Only 14.5% of overlapping customers have a documented consent record, and Greenvale's privacy notice does not yet reference Covera. The CDO's "shared Group data" framing conflicts with Group Legal's SYSC 8 / UK GDPR position. <b>Recommendation:</b> treat cross-entity data use as gated behind either (a) a documented Legitimate Interest Assessment for aggregate/model-level use, or (b) explicit opt-in consent for customer-level personalisation — with the privacy notice and consent capture fixed before any data product ships.</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Customer lifetime value: cross-sold vs. not</h3>
+      <p class="note">Customers holding both a Greenvale product and a Covera policy are markedly more valuable</p>
+      <div class="chart-box"><canvas id="chClv"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>Consent coverage among overlap customers</h3>
+      <p class="note">The gap that must close before scaled cross-entity personalisation</p>
+      <div class="chart-box"><canvas id="chConsent"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Covera data assets — sizing</h3>
+    <table class="mini">
+      <tr><th>Asset</th><th>Volume</th><th>Use case readiness</th></tr>
+      <tr><td>App event data (12 months)</td><td>4.2M events, 93,000 customers</td><td><span class="tag lo">Ready — aggregate/behavioural</span></td></tr>
+      <tr><td>Policy purchase history</td><td>187,000 policies (home, travel, device)</td><td><span class="tag lo">Ready — aggregate/behavioural</span></td></tr>
+      <tr><td>Claims data</td><td>14,200 claims incl. fraud flag</td><td><span class="tag mid">Ready for fraud/risk models only</span></td></tr>
+      <tr><td>Cross-entity customer-level match</td><td>41,000 overlap customers</td><td><span class="tag hi">Blocked — consent gap (14.5%)</span></td></tr>
+    </table>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">Prototype dashboard · illustrative analysis built on the Greenvale/Covera sample dataset · for board and working-team discussion, not a production reporting artefact.</div>
+</footer>
+
+<script>
+window.addEventListener('DOMContentLoaded', function () {
+
+if (typeof Chart === 'undefined') {
+  document.querySelectorAll('.chart-box').forEach(function (box) {
+    box.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#B4402D;font-size:12px;text-align:center;padding:0 12px;">Chart library failed to load — check internet connection and reload.</div>';
+  });
+  return;
+}
+
+const navy='#0B2545', teal='#1B7A72', tealSoft='#7FB9B2', amber='#C97A1A', red='#B4402D', slate='#8FA4B4', line='#E4E9EE';
+Chart.defaults.font.family = "'Inter',sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = '#5B6B7C';
+
+const allCharts = [];
+
+function bar(id, labels, data, colors, opts={}){
+  const c = new Chart(document.getElementById(id), {
+    type:'bar',
+    data:{labels, datasets:[{data, backgroundColor:colors, borderRadius:5, maxBarThickness:46}]},
+    options:{
+      plugins:{legend:{display:false}, tooltip:{callbacks:{label:c=>c.formattedValue+(opts.suffix||'%')}}},
+      scales:{
+        y:{beginAtZero:true, grid:{color:line}, ticks:{callback:v=>v+(opts.suffix||'%')}},
+        x:{grid:{display:false}}
+      },
+      ...opts.extra
+    }
+  });
+  allCharts.push(c);
+  return c;
+}
+
+// Churn by age segment vs industry
+bar('chChurnAge',
+  ['18-35\n(sample)','25-35\nindustry bmk','36-55','55+'],
+  [29.2,9.1,16.2,5.9],
+  [red,'#C7D2DA',amber,teal]
+);
+
+// Dormancy
+bar('chDormancy',
+  ['0-7d','8-14d','15-30d','31-60d','60d+'],
+  [0.7,1.0,5.7,80.5,100],
+  [teal,teal,amber,red,red]
+);
+
+// Channel churn
+bar('chChannel',
+  ['Social Media','Google Search','App Store','Rel. Mgr','Referral','Website','Broker','Branch','Telephone'],
+  [35.2,34.1,29.2,22.9,21.1,15.6,13.5,9.6,5.4],
+  [red,red,red,amber,amber,'#C7D2DA','#C7D2DA',teal,teal],
+  {extra:{indexAxis:'y'}}
+);
+
+// Product holding churn 18-35
+bar('chProduct',
+  ['1 product','2 products','3 products','4 products'],
+  [31.3,31.0,27.8,26.5],
+  [red,amber,'#C7D2DA',teal]
+);
+
+// TAT stages
+bar('chTat',
+  ['Doc check','Analyst review','Committee','Offer gen'],
+  [2.0,6.9,4.6,1.8],
+  [teal,red,amber,'#C7D2DA'],
+  {suffix:'d'}
+);
+
+// Decision mix donut
+allCharts.push(new Chart(document.getElementById('chDecision'), {
+  type:'doughnut',
+  data:{labels:['Approved','Rejected — early','Rejected — full review','Approved conditional'],
+    datasets:[{data:[35.1,30.2,20.5,14.1], backgroundColor:[teal,amber,red,tealSoft], borderWidth:2, borderColor:'#fff'}]},
+  options:{plugins:{legend:{position:'bottom', labels:{boxWidth:10, padding:12}}}, cutout:'62%'}
+}));
+
+// Complete vs incomplete TAT
+bar('chComplete',
+  ['Incomplete applications (30%)','Complete applications (70%)'],
+  [2.0,21.1],
+  [teal,red],
+  {suffix:'d', extra:{indexAxis:'y'}}
+);
+
+// CLV cross-sell
+bar('chClv',
+  ['Not cross-sold','Cross-sold\n(Covera + Greenvale)'],
+  [9489,14980],
+  ['#C7D2DA',teal],
+  {suffix:'', extra:{scales:{y:{beginAtZero:true, grid:{color:line}, ticks:{callback:v=>'£'+v.toLocaleString()}}, x:{grid:{display:false}}}}}
+);
+
+// Consent coverage
+allCharts.push(new Chart(document.getElementById('chConsent'), {
+  type:'doughnut',
+  data:{labels:['Documented consent','No documented consent'],
+    datasets:[{data:[14.5,85.5], backgroundColor:[teal,red], borderWidth:2, borderColor:'#fff'}]},
+  options:{plugins:{legend:{position:'bottom', labels:{boxWidth:10,padding:12}}}, cutout:'62%'}
+}));
+
+// Tabs
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+    // charts created while their tab was hidden (display:none) measure 0 width —
+    // force a resize now that the panel is visible so they actually draw
+    requestAnimationFrame(() => allCharts.forEach(c => c.resize()));
+  });
+});
+
+}); // end DOMContentLoaded
+
+// ---- Casual copy-protection deterrents ----
+// Note: this only discourages casual viewing/downloading (right-click, common
+// shortcuts, drag-out). It cannot block dedicated attempts (browser DevTools'
+// Sources/Network panels, "curl"/wget, disabling JS, etc.) — the browser must
+// receive the full page to render it, so true source-hiding isn't possible
+// for a client-side HTML file.
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('dragstart', e => e.preventDefault());
+document.addEventListener('selectstart', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+  const k = e.key.toUpperCase();
+  const blockedCombo =
+    (e.ctrlKey || e.metaKey) && ['S','U','P'].includes(k) ||          // save / view-source / print
+    (e.ctrlKey || e.metaKey) && e.shiftKey && ['I','J','C'].includes(k) || // devtools panels
+    k === 'F12';
+  if (blockedCombo) e.preventDefault();
+});
+</script>
+<style>
+  ::selection { background: transparent; }
+  body { -webkit-user-select: none; -moz-user-select: none; user-select: none; }
+</style>
+</body>
+</html>
